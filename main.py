@@ -35,7 +35,7 @@ def add_products_bulk(products: list[Product]):
     try:
         collection.insert_many(
             [p.dict() for p in products],
-            ordered=False   # this is the key line
+            ordered=False
         )
         return {"message": f"{len(products)} products processed"}
     except BulkWriteError as e:
