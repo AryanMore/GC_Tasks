@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routes import router
+from Router_Functions.router import router
 from qdrant_connect import create_collection
 
 app = FastAPI(title="Document Vector CRUD API")
