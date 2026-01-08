@@ -12,7 +12,7 @@ def parse_markdown(md_text):
 
     for line in lines:
 
-        # New heading
+        # FOR headings
         if re.match(r"^#{1,3}\s", line) and not in_code:
             if buffer:
                 data.append({
@@ -25,7 +25,7 @@ def parse_markdown(md_text):
             current_heading = line.replace("#","").strip()
             continue
 
-        # Code block start
+        # For Code block start
         if line.strip().startswith("```"):
             if not in_code:
                 in_code = True
