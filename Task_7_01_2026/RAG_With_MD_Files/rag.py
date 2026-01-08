@@ -41,6 +41,8 @@ def ask(query):
     )
 
     hits = rerank(query, hits)[:4]
+    print("TOP HITS: ")
+    print(hits)
 
 
     context = ""
@@ -56,6 +58,7 @@ def ask(query):
     prompt = f"""
             You are a Qdrant documentation assistant.
             Answer strictly using the context below.
+            If the answer contains code snippets, format them.
 
             If the answer is not present, reply:
             "I could not find this in the Qdrant documentation."
