@@ -20,7 +20,7 @@ def detect_intent(query):
         return {"type": "mixed"}
     return {}
 
-def ask(query):
+def search(query):
     vec = get_embedding(query)
     intent = detect_intent(query)
 
@@ -41,8 +41,33 @@ def ask(query):
     )
 
     hits = rerank(query, hits)[:4]
-    print("TOP HITS: ")
-    print(hits)
+    return hits
+
+def ask(query):
+    # vec = get_embedding(query)
+    # intent = detect_intent(query)
+
+    # filters = []
+    # if "type" in intent:
+    #     filters.append({"key": "type", "match": {"value": intent["type"]}})
+
+    # hits = client.search(
+    # collection_name=COLLECTION,
+    # query_vector=vec,
+    # limit=10,
+    # query_filter={
+    #     "should": [
+    #         {"key": "content", "match": {"text": query}},
+    #         *filters
+    #         ]
+    #     }
+    # )
+
+    # hits = rerank(query, hits)[:4]
+    # print("TOP HITS: ")
+    # print(hits)
+
+    hits = search(query)
 
 
     context = ""
